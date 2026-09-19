@@ -1,3 +1,10 @@
+# Shinylive/Chromium download compatibility (Posit documented workaround).
+downloadButton <- function(...) {
+  tag <- shiny::downloadButton(...)
+  if (grepl("emscripten", R.version$os)) tag$attribs$download <- NULL
+  tag
+}
+
 library(shiny)
 library(ggplot2)
 library(dplyr)
